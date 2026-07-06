@@ -1,0 +1,41 @@
+# hbar.health — Demo — brain-app manifest
+#
+# The presenter's companion, INSIDE the brain. The single page the operator
+# speaks from while demonstrating to a Praxis: what the brain is, the tools, why
+# it fits a practice, the architecture (which server, where data lives), the
+# legal notes, and an objection-handling FAQ. DE/EN toggle so the operator can
+# read English while showing German. Static — no model, no patient data.
+#
+# Distinct from Start (the doctor-facing front door) and from MENU_SLIDE.md (the
+# "what we can build next" sales one-pager). This is the deep reference for the
+# person running the demo.
+#
+# Schema: registry/schema/brain/app.schema.json (in hbar.world)
+# Created: 2026-07-06
+
+dialect: brain-app/v1
+id: hbar-health-demo
+name: Demo
+version: 0.1.0
+description: Präsentations-Begleiter für die Vorführung in der Praxis — was das Brain ist, die Werkzeuge, Eignung für die Praxis, Architektur, rechtliche Hinweise und FAQ. DE/EN. Statisch, kein Modell, keine Patientendaten.
+license: AGPL-3.0
+
+author:
+  name: hbar
+  url: https://hbar.systems
+  contact: hello@hbar.systems
+
+repo: https://github.com/hbar-systems/hbar-health-demo
+
+tab:
+  label: Demo
+  route: /demo
+  order: 11
+
+entries:
+  ui_bundle: dist/
+
+# No permissions — a static reference surface. No model, no data.
+
+engines:
+  brainfoundry-nous: ">=0.8.4"
