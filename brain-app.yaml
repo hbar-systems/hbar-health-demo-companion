@@ -16,7 +16,7 @@
 dialect: brain-app/v1
 id: hbar-health-demo
 name: Demo
-version: 0.1.0
+version: 0.2.0
 description: Präsentations-Begleiter für die Vorführung in der Praxis — was das Brain ist, die Werkzeuge, Eignung für die Praxis, Architektur, rechtliche Hinweise und FAQ. DE/EN. Statisch, kein Modell, keine Patientendaten.
 license: AGPL-3.0
 
