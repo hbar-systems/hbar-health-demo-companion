@@ -130,6 +130,7 @@ export interface Faq {
 }
 
 export const FAQ: Faq[] = [
+  { de: { q: "TIPP (intern): Unsicher bei einer Frage? Fragen Sie das Brain selbst.", a: "Öffnen Sie Praxis-Wissen und stellen Sie die Frage (etwa: Wo liegen die Daten?). Das Brain antwortet aus der hinterlegten Wissensbasis — und führt damit gleich das Produkt vor. Voraussetzung: das Wissensdokument ist geladen und der Pod ist aktiv." }, en: { q: "TIP (internal): Unsure on a question? Ask the brain itself.", a: "Open Praxis-Wissen and ask it (e.g. Where does the data live?). The brain answers from its loaded knowledge base — and demos the product at the same time. Requires: the knowledge doc loaded and the pod running." } },
   { de: { q: "Wo liegen meine Daten?", a: "Auf Ihrem eigenen Server in der Praxis. Sie verlassen die Praxis nicht." }, en: { q: "Where does my data live?", a: "On your own server in the practice. It doesn't leave." } },
   { de: { q: "Geht etwas an OpenAI oder Microsoft?", a: "Nein. Die KI läuft lokal. (Nur sagen, wenn das lokale Modell wirklich läuft.)" }, en: { q: "Does anything go to OpenAI/Microsoft?", a: "No. The AI runs locally. (Only say this when the local model is actually running.)" } },
   { de: { q: "Diagnostiziert die KI?", a: "Nein. Nur Entwürfe und Zusammenfassungen. Sie entscheiden; die Verantwortung bleibt bei Ihnen." }, en: { q: "Does the AI diagnose?", a: "No. Only drafts and summaries. You decide; responsibility stays with you." } },
