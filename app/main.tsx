@@ -20,6 +20,7 @@ import {
   ROADMAP,
   TOOLS,
   FAQ,
+  DEMO_ASSETS,
 } from "./content";
 import "./styles.css";
 
@@ -40,12 +41,13 @@ function storeLang(l: Lang): void {
   }
 }
 
-type SectionId = "overview" | "why" | "tools" | "architecture" | "legal" | "faq" | "roadmap";
+type SectionId = "overview" | "why" | "tools" | "beispiele" | "architecture" | "legal" | "faq" | "roadmap";
 
 const NAV: { id: SectionId; de: string; en: string }[] = [
   { id: "overview", de: OVERVIEW.title.de, en: OVERVIEW.title.en },
   { id: "why", de: WHY.title.de, en: WHY.title.en },
   { id: "tools", de: "Die Werkzeuge", en: "The tools" },
+  { id: "beispiele", de: "Beispieldateien", en: "Example files" },
   { id: "architecture", de: ARCHITECTURE.title.de, en: ARCHITECTURE.title.en },
   { id: "legal", de: LEGAL.title.de, en: LEGAL.title.en },
   { id: "faq", de: "FAQ", en: "FAQ" },
@@ -56,7 +58,18 @@ function App() {
   const [theme, setTheme] = useState<Theme>(getStoredTheme);
   const [lang, setLang] = useState<Lang>(getStoredLang);
   const [section, setSection] = useState<SectionId>("overview");
+  const [copied, setCopied] = useState<string>("");
   const c = colors(theme);
+
+  const copyText = (key: string, text: string) => {
+    navigator.clipboard?.writeText(text).then(
+      () => {
+        setCopied(key);
+        setTimeout(() => setCopied(""), 2000);
+      },
+      () => { /* clipboard blocked — ignore */ },
+    );
+  };
 
   const toggleTheme = () => {
     const next: Theme = theme === "light" ? "dark" : "light";
@@ -130,6 +143,46 @@ function App() {
                 <div key={i} style={{ background: c.card, border: `1px solid ${c.border}`, borderRadius: 10, padding: "0.85rem 1rem" }}>
                   <div style={{ fontWeight: 700, color: c.text, fontSize: "0.95rem" }}>{t[lang].name}</div>
                   <div style={{ fontSize: "0.86rem", color: c.muted, marginTop: "0.2rem", lineHeight: 1.5 }}>{t[lang].desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {section === "beispiele" && (
+          <div>
+            <h1 style={{ fontSize: "1.5rem", fontWeight: 800, margin: "0 0 0.4rem 0", color: c.text }}>{lang === "de" ? "Beispieldateien" : "Example files"}</h1>
+            <p style={{ fontSize: "0.86rem", color: c.muted, margin: "0 0 1.3rem 0", lineHeight: 1.6 }}>
+              {lang === "de"
+                ? "Beispiel-Dokumente je Werkzeug — zum Ausprobieren herunterladen oder den Text kopieren und einfügen."
+                : "Example documents per tool — download to try, or copy the text and paste it in."}
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.9rem" }}>
+              {DEMO_ASSETS.map((a, i) => (
+                <div key={i} style={{ background: c.card, border: `1px solid ${c.border}`, borderRadius: 10, padding: "0.9rem 1.1rem" }}>
+                  <div style={{ fontWeight: 700, color: c.brand, fontSize: "0.95rem" }}>{a.tool}</div>
+                  <div style={{ fontSize: "0.85rem", color: c.muted, margin: "0.25rem 0 0.7rem 0", lineHeight: 1.55 }}>{a.how[lang]}</div>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.45rem", alignItems: "center" }}>
+                    {a.files?.map((f, j) => (
+                      <a
+                        key={j}
+                        href={f.href}
+                        download={f.label}
+                        style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem", padding: "0.32rem 0.7rem", fontSize: "0.8rem", fontWeight: 600, border: `1px solid ${c.brand}`, borderRadius: 6, background: "transparent", color: c.brand, textDecoration: "none" }}
+                      >
+                        ↓ {f.label}
+                      </a>
+                    ))}
+                    {a.copy && (
+                      <button
+                        type="button"
+                        onClick={() => copyText(a.tool, a.copy!.text)}
+                        style={{ padding: "0.32rem 0.7rem", fontSize: "0.8rem", fontWeight: 600, border: `1px solid ${c.border}`, borderRadius: 6, background: "transparent", color: c.muted, cursor: "pointer" }}
+                      >
+                        {copied === a.tool ? (lang === "de" ? "Kopiert ✓" : "Copied ✓") : a.copy.label[lang]}
+                      </button>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>

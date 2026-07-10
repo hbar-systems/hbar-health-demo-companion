@@ -143,3 +143,69 @@ export const FAQ: Faq[] = [
   { de: { q: "Was kostet es?", a: "Pro Arbeitsplatz, nur die Module, die Sie brauchen. Als eine der ersten Praxen vergünstigt." }, en: { q: "What does it cost?", a: "Per workstation, only the modules you need. Discounted as one of the first practices." } },
   { de: { q: "Ersetzt es Personal?", a: "Nein. Wir nehmen der MFA nur die stumpfe Dokumentationsarbeit ab." }, en: { q: "Does it replace staff?", a: "No. It only takes the dull documentation work off the assistant." } },
 ];
+
+/**
+ * Downloadable / copyable example files, grouped by the tool they feed. Files
+ * live in public/beispiele/ and are served alongside the app bundle (relative
+ * href + the download attribute — the host iframe now carries allow-downloads).
+ * Paste-text exemplars use the clipboard instead (works inside the sandbox).
+ */
+export interface DemoFile { href: string; label: string; }
+export interface DemoAsset {
+  tool: string;
+  how: { de: string; en: string };
+  files?: DemoFile[];
+  copy?: { label: { de: string; en: string }; text: string };
+}
+
+export const DEMO_ASSETS: DemoAsset[] = [
+  {
+    tool: "Eingangspost",
+    how: {
+      de: "PDF in Eingangspost hochladen — oder den Beispieltext kopieren und in die „Text einfügen“-Box einfügen.",
+      en: "Upload the PDF in Eingangspost — or copy the sample text and paste it into the “Text einfügen” box.",
+    },
+    files: [{ href: "beispiele/entlassbrief-beispielmann.pdf", label: "entlassbrief-beispielmann.pdf" }],
+    copy: {
+      label: { de: "Beispiel-Brief kopieren", en: "Copy sample letter" },
+      text: "Sehr geehrte Kollegin, wir sahen Ihren Patienten Herrn Klein am 12.06.2026 in der kardiologischen Sprechstunde. Diagnosen: arterielle Hypertonie, beginnende Herzinsuffizienz (NYHA II). Empfehlung: Beginn mit Ramipril 2,5 mg, Kontrolle der Nierenwerte in 2 Wochen, echokardiographische Verlaufskontrolle in 3 Monaten. Mit kollegialen Grüßen, Dr. Weber.",
+    },
+  },
+  {
+    tool: "Praxis-Wissen",
+    how: {
+      de: "Diese QM-Dokumente einmalig über den Patientenakten-Tab hochladen — danach beantwortet Praxis-Wissen Fragen mit Quellenangabe.",
+      en: "Upload these QM documents once via the Patientenakten tab — then Praxis-Wissen answers questions with sources.",
+    },
+    files: [
+      { href: "beispiele/hygieneplan.md", label: "hygieneplan.md" },
+      { href: "beispiele/nadelstichverletzung.md", label: "nadelstichverletzung.md" },
+      { href: "beispiele/urlaubs-und-vertretungsregelung.md", label: "urlaubs-und-vertretungsregelung.md" },
+      { href: "beispiele/rezeptwunsch-ablauf.md", label: "rezeptwunsch-ablauf.md" },
+      { href: "beispiele/notfallplan.md", label: "notfallplan.md" },
+      { href: "beispiele/so-funktioniert-hbar-health.md", label: "so-funktioniert-hbar-health.md" },
+    ],
+  },
+  {
+    tool: "Arztbrief",
+    how: {
+      de: "Stichpunkte in die Arztbrief-Felder eintragen (oder diesen Beispielsatz als Orientierung kopieren), dann Entwurf erstellen.",
+      en: "Enter bullet points into the Arztbrief fields (or copy this sample as a guide), then generate a draft.",
+    },
+    copy: {
+      label: { de: "Beispiel-Stichpunkte kopieren", en: "Copy sample bullets" },
+      text: "Hauptproblem: Akute Bronchitis bei bekannter COPD. Beschwerden: Husten mit gelblichem Auswurf, Belastungsdyspnoe, kein Fieber. Verlauf: akut. Vorerkrankungen: COPD GOLD II, arterielle Hypertonie. Medikation: Ramipril 5 mg 1-0-0, Salbutamol bei Bedarf. Unsicherheit: mittel.",
+    },
+  },
+  {
+    tool: "Patientenbrief",
+    how: {
+      de: "Diesen Text in die Quelle-Box einfügen, eine Sprache wählen (z. B. Einfaches Deutsch), dann Patientenbrief erstellen.",
+      en: "Paste this text into the source box, pick a language (e.g. plain German), then generate the patient letter.",
+    },
+    copy: {
+      label: { de: "Beispiel-Befund kopieren", en: "Copy sample findings" },
+      text: "Diagnose: neu festgestelltes Vorhofflimmern. Wir haben mit der blutverdünnenden Therapie Apixaban 5 mg zweimal täglich begonnen, um Schlaganfälle zu verhindern. Kontrolle beim Kardiologen in vier Wochen. Bitte täglich den Puls fühlen. Bei plötzlicher Luftnot, Brustschmerz oder einseitiger Schwäche sofort den Notruf 112 wählen.",
+    },
+  },
+];
