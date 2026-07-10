@@ -113,7 +113,7 @@ export interface Tool {
 }
 
 export const TOOLS: Tool[] = [
-  { de: { name: "Eingangspost", desc: "Entlassbriefe lesen → Diagnosen + Therapieempfehlung als Stichpunkte." }, en: { name: "Incoming mail", desc: "Read discharge letters → diagnoses + treatment recommendation as bullets." } },
+  { de: { name: "Eingangspost", desc: "Brief lesen (PDF-Upload oder eingefügter Text) → strukturierte Zusammenfassung. Auf Wunsch ein Antwortschreiben-Entwurf." }, en: { name: "Incoming mail", desc: "Read a letter (PDF upload or pasted text) → structured summary. Optionally a reply draft." } },
   { de: { name: "Recall", desc: "Aus Vorsorge-/Impf-/DMP-Ziffern automatisch den nächsten Termin." }, en: { name: "Recall", desc: "From check-up/vaccination/DMP codes, the next recall date automatically." } },
   { de: { name: "Medikationsabgleich", desc: "Klinikplan vs. Praxisliste — neu, abgesetzt, Dosis geändert." }, en: { name: "Medication reconciliation", desc: "Hospital plan vs practice list — new, stopped, dose changed." } },
   { de: { name: "Abrechnungs-Hilfe", desc: "Erinnert an vergessene, zustehende Ziffern. Nur Nachtragen." }, en: { name: "Billing helper", desc: "Reminds of forgotten, entitled codes. Only catching up." } },
@@ -122,6 +122,7 @@ export const TOOLS: Tool[] = [
   { de: { name: "Praxis-Wissen", desc: "Fragen an die eigenen QM-/Hygiene-/Ablauf-Dokumente, mit Quelle." }, en: { name: "Practice knowledge", desc: "Ask your own QM/hygiene/procedure docs, with source." } },
   { de: { name: "Patientenbrief", desc: "Befunde patientenverständlich — auf Wunsch übersetzt." }, en: { name: "Patient letter", desc: "Findings in plain language — translated on request." } },
   { de: { name: "CASE 1 (Lernwerkzeug)", desc: "Beispiel für klinisches Denken an synthetischen Fällen. Nicht für die Versorgung." }, en: { name: "CASE 1 (teaching)", desc: "Clinical-reasoning example on synthetic cases. Not for patient care." } },
+  { de: { name: "Protokoll", desc: "Praxisweites Prüfprotokoll aller KI-Anfragen — Zeit, Werkzeug, Modell, Anfrage. Serverseitig (v1)." }, en: { name: "Audit log", desc: "Practice-wide audit log of every AI request — time, tool, model, query. Server-side (v1)." } },
 ];
 
 export interface Faq {
